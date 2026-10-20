@@ -1,0 +1,29 @@
+# Local environments and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# Editors and generated outputs
+.vs/
+.idea/
+.vscode/
+build/
+out/
+dist/
+node_modules/
+__pycache__/
+*.pyc
+*.user
+*.suo
+*.log
+*.tmp
+~$*
+Thumbs.db
+.DS_Store
+
+# Private experiment data is not source code
+local-experiments/
+local-results/

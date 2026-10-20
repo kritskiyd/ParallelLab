@@ -1,0 +1,27 @@
+name: Task
+description: Техническая задача одного PBI
+title: "[Task] "
+labels: [task]
+body:
+  - type: input
+    id: parent
+    attributes:
+      label: Родительский PBI
+      description: Ссылка на реальный Issue; добавьте задачу как Sub-issue
+    validations:
+      required: true
+  - type: textarea
+    id: work
+    attributes:
+      label: Техническая задача
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: Результат и способ проверки
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: Оценка SP относится к PBI. Не дублируйте её в каждой дочерней Task и не закрывайте PBI после выполнения только одной задачи.

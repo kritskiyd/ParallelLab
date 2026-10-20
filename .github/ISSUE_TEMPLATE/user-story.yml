@@ -1,0 +1,60 @@
+name: User Story
+description: PBI с пользовательской ценностью и критериями приёмки
+title: "[PBI] "
+labels: [pbi]
+body:
+  - type: textarea
+    id: story
+    attributes:
+      label: User Story
+      placeholder: Как пользователь, я хочу выполнить действие, чтобы получить результат.
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Описание
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: Наблюдаемые условия приёмки, ошибки и ограничения
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options: [P0, P1, P2]
+    validations:
+      required: true
+  - type: dropdown
+    id: release
+    attributes:
+      label: Release
+      options: [MVP, Version 1, Version 2]
+    validations:
+      required: true
+  - type: dropdown
+    id: points
+    attributes:
+      label: Story Points
+      options: ["1", "2", "3", "5", "8", "13"]
+    validations:
+      required: true
+  - type: input
+    id: epic
+    attributes:
+      label: Parent Epic
+      description: Ссылка на Epic; затем задайте нативную связь Sub-issue
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Зависимости и проверочные данные
+  - type: markdown
+    attributes:
+      value: После создания синхронизируйте метки, milestone и поля Project. Ответы формы сами по себе поля Project не заполняют.

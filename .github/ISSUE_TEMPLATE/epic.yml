@@ -1,0 +1,30 @@
+name: Epic
+description: Крупное направление продукта и дочерние PBI
+title: "[Epic] "
+labels: [epic]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Описание и бизнес-ценность
+      description: Какую потребность покрывает направление и для кого
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Функциональный охват и границы релизов
+      description: MVP, Version 1, Version 2 без переноса CUDA Native в MVP
+    validations:
+      required: true
+  - type: textarea
+    id: completion
+    attributes:
+      label: Критерии завершения
+    validations:
+      required: true
+  - type: textarea
+    id: children
+    attributes:
+      label: Дочерние PBI
+      description: Ссылки на реальные Issues; после создания настройте Sub-issues
