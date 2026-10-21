@@ -1,13 +1,12 @@
-name: Task
-description: Техническая задача одного PBI
-title: "[Task] "
-labels: [task]
+name: Техническая задача
+description: Техническая часть одной пользовательской истории
+labels: [задача]
 body:
   - type: input
     id: parent
     attributes:
-      label: Родительский PBI
-      description: Ссылка на реальный Issue; добавьте задачу как Sub-issue
+      label: Родительская история
+      description: Ссылка на реальную историю; настройте нативную дочернюю связь
     validations:
       required: true
   - type: textarea
@@ -24,4 +23,4 @@ body:
       required: true
   - type: markdown
     attributes:
-      value: Оценка SP относится к PBI. Не дублируйте её в каждой дочерней Task и не закрывайте PBI после выполнения только одной задачи.
+      value: Оценка относится к родительской истории. Не дублируйте её в технических частях и не закрывайте историю после выполнения одной задачи.

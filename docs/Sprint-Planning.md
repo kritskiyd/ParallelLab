@@ -1,42 +1,382 @@
 # Планирование спринтов
 
-## Основания и допущения
+## Правила планирования
 
-Сохранено существующее поле Iteration и его дата начала 20.10.2026. Пять итераций шаблона переименованы в Sprint 1–5; добавлены Sprint 6–8. Длительность каждой итерации составляет 14 календарных дней. План не содержит произвольно назначенных прошедших дат.
+Сохранено начало существующего плана 20.10.2026. Двенадцать последовательных двухнедельных спринтов заканчиваются 05.04.2027. Это предварительный календарь, а не обещание срока. Доступность автора, праздники и фактическая скорость разработки учитываются при каждом планировании. Первоначальные восемь спринтов расширены до двенадцати с сохранением существующего поля и первых восьми интервалов.
 
-Реальная velocity ещё не измерена. Набор 13–22 SP на спринт является предварительным разбиением по зависимостям, а не подтверждённой производительностью одного разработчика. Sprint 5 имеет повышенную неопределённость из-за границ CUDA-транслятора. На Planning этот объём нужно уточнить, при необходимости перенести целую историю в дополнительную итерацию.
+В первом спринте выполняются подготовительные части историй второго спринта, в двенадцатом: общая проверка первого выпуска. Их работа включена в оценки родительских историй. Ноль новых единиц в этих двух спринтах не означает отсутствие работы и не является оценкой их трудозатрат. Разработку и отдельные проверки не следует считать дважды. В спринтах реализации планируется от 8 до 16 единиц; суммарно сохранены 126. Эти оценки не являются измеренной скоростью команды.
 
-Праздники и доступность разработчика на рубеже года не считаются рабочими днями автоматически. Календарь шаблона сохранён как предварительная сетка; обязательства формируются после согласования доступности.
+Общие параметры и диагностика перенесены до первого выполнения. Консоль и отмена появились до приёмки OpenMP и MPI. CUDA разбита на преобразование и CPU-конвейер. Расширенные функции будущих выпусков не включены в этот план.
 
-## План MVP
+Состав каждого спринта находится в основном поле «Спринт» существующего GitHub Project. Истории имеют собственный раздел «Спринт». Итерации не предоставляют отдельного поля описания цели, поэтому цели, результаты и ссылки приведены ниже.
 
-| Итерация | Даты включительно | Тема | PBI | SP | Sprint Goal |
-| --- | --- | --- | --- | --- | --- |
-| Sprint 1 | 20.10.2026–02.11.2026 | Основа эксперимента | [M01 / #11](https://github.com/kritskiyd/ParallelLab/issues/11), [M02 / #12](https://github.com/kritskiyd/ParallelLab/issues/12), [M03 / #13](https://github.com/kritskiyd/ParallelLab/issues/13) | 13 | Создать и повторно открыть эксперимент в рабочей области. |
-| Sprint 2 | 03.11.2026–16.11.2026 | Исходный код | [M04 / #14](https://github.com/kritskiyd/ParallelLab/issues/14), [M05 / #15](https://github.com/kritskiyd/ParallelLab/issues/15), [M07 / #17](https://github.com/kritskiyd/ParallelLab/issues/17) | 13 | Подготовить несколько реализаций и последовательную базу. |
-| Sprint 3 | 17.11.2026–30.11.2026 | Подготовка сборки | [M11 / #21](https://github.com/kritskiyd/ParallelLab/issues/21), [M14 / #24](https://github.com/kritskiyd/ParallelLab/issues/24), [M16 / #26](https://github.com/kritskiyd/ParallelLab/issues/26) | 13 | Проверить CPU-окружение, параметры и собрать программу. |
-| Sprint 4 | 01.12.2026–14.12.2026 | Управляемый параллельный запуск | [M08 / #18](https://github.com/kritskiyd/ParallelLab/issues/18), [M10 / #20](https://github.com/kritskiyd/ParallelLab/issues/20), [M12 / #22](https://github.com/kritskiyd/ParallelLab/issues/22), [M17 / #27](https://github.com/kritskiyd/ParallelLab/issues/27), [M18 / #28](https://github.com/kritskiyd/ParallelLab/issues/28) | 19 | Выполнить и остановить Sequential, OpenMP и MPI с понятной консолью. |
-| Sprint 5 | 15.12.2026–28.12.2026 | CUDA на CPU | [M06 / #16](https://github.com/kritskiyd/ParallelLab/issues/16), [M09 / #19](https://github.com/kritskiyd/ParallelLab/issues/19), [M13 / #23](https://github.com/kritskiyd/ParallelLab/issues/23), [M15 / #25](https://github.com/kritskiyd/ParallelLab/issues/25), [M19 / #29](https://github.com/kritskiyd/ParallelLab/issues/29) | 22 | Преобразовать поддерживаемый CUDA-код и выполнить его на CPU без NVIDIA GPU. |
-| Sprint 6 | 29.12.2026–11.01.2027 | Серийный эксперимент | [M20 / #30](https://github.com/kritskiyd/ParallelLab/issues/30), [M21 / #31](https://github.com/kritskiyd/ParallelLab/issues/31), [M22 / #32](https://github.com/kritskiyd/ParallelLab/issues/32) | 13 | Пройти план перебора параметров с повторами и прогрессом. |
-| Sprint 7 | 12.01.2027–25.01.2027 | Сохранённый результат | [M23 / #33](https://github.com/kritskiyd/ParallelLab/issues/33), [M24 / #34](https://github.com/kritskiyd/ParallelLab/issues/34), [M25 / #35](https://github.com/kritskiyd/ParallelLab/issues/35), [M30 / #40](https://github.com/kritskiyd/ParallelLab/issues/40), [M31 / #41](https://github.com/kritskiyd/ParallelLab/issues/41) | 17 | Повторно открыть результат с ревизией и снимком системы. |
-| Sprint 8 | 26.01.2027–08.02.2027 | Сравнительный анализ MVP | [M26 / #36](https://github.com/kritskiyd/ParallelLab/issues/36), [M27 / #37](https://github.com/kritskiyd/ParallelLab/issues/37), [M28 / #38](https://github.com/kritskiyd/ParallelLab/issues/38), [M29 / #39](https://github.com/kritskiyd/ParallelLab/issues/39) | 16 | Сопоставить корректные измерения и пройти полный сценарий MVP. |
+## Краткий план
 
-Итого: 31 PBI, 126 SP. Спринт 7 реализует устойчивое хранение и историю; до него запуски и серии демонстрируют временные результаты в рамках сессии, без обещания готового постоянного журнала.
+| Спринт | Тема | Истории | Технические задачи | Оценка историй |
+| --- | --- | --- | --- | --- |
+| [Спринт 1](#спринт-1) | Подготовка основы приложения | Подготовка / общая проверка | [#64](https://github.com/kritskiyd/ParallelLab/issues/64), [#71](https://github.com/kritskiyd/ParallelLab/issues/71), [#72](https://github.com/kritskiyd/ParallelLab/issues/72) | 0 |
+| [Спринт 2](#спринт-2) | Создание и хранение экспериментов | [#11](https://github.com/kritskiyd/ParallelLab/issues/11), [#12](https://github.com/kritskiyd/ParallelLab/issues/12), [#13](https://github.com/kritskiyd/ParallelLab/issues/13) | [#65](https://github.com/kritskiyd/ParallelLab/issues/65), [#66](https://github.com/kritskiyd/ParallelLab/issues/66), [#67](https://github.com/kritskiyd/ParallelLab/issues/67), [#68](https://github.com/kritskiyd/ParallelLab/issues/68), [#69](https://github.com/kritskiyd/ParallelLab/issues/69), [#70](https://github.com/kritskiyd/ParallelLab/issues/70), [#73](https://github.com/kritskiyd/ParallelLab/issues/73) | 13 |
+| [Спринт 3](#спринт-3) | Работа с исходным кодом | [#14](https://github.com/kritskiyd/ParallelLab/issues/14), [#15](https://github.com/kritskiyd/ParallelLab/issues/15), [#17](https://github.com/kritskiyd/ParallelLab/issues/17) | [#74](https://github.com/kritskiyd/ParallelLab/issues/74) | 13 |
+| [Спринт 4](#спринт-4) | Параметры, окружение и сборка | [#21](https://github.com/kritskiyd/ParallelLab/issues/21), [#24](https://github.com/kritskiyd/ParallelLab/issues/24), [#26](https://github.com/kritskiyd/ParallelLab/issues/26) | [#75](https://github.com/kritskiyd/ParallelLab/issues/75) | 13 |
+| [Спринт 5](#спринт-5) | Управляемый запуск и OpenMP | [#18](https://github.com/kritskiyd/ParallelLab/issues/18), [#22](https://github.com/kritskiyd/ParallelLab/issues/22), [#27](https://github.com/kritskiyd/ParallelLab/issues/27), [#28](https://github.com/kritskiyd/ParallelLab/issues/28) | [#76](https://github.com/kritskiyd/ParallelLab/issues/76) | 14 |
+| [Спринт 6](#спринт-6) | MPI и характеристики системы | [#20](https://github.com/kritskiyd/ParallelLab/issues/20), [#40](https://github.com/kritskiyd/ParallelLab/issues/40), [#41](https://github.com/kritskiyd/ParallelLab/issues/41) | [#77](https://github.com/kritskiyd/ParallelLab/issues/77) | 11 |
+| [Спринт 7](#спринт-7) | Подготовка CUDA-трансляции | [#16](https://github.com/kritskiyd/ParallelLab/issues/16), [#19](https://github.com/kritskiyd/ParallelLab/issues/19), [#25](https://github.com/kritskiyd/ParallelLab/issues/25) | [#78](https://github.com/kritskiyd/ParallelLab/issues/78) | 14 |
+| [Спринт 8](#спринт-8) | CUDA на CPU | [#23](https://github.com/kritskiyd/ParallelLab/issues/23), [#29](https://github.com/kritskiyd/ParallelLab/issues/29) | [#79](https://github.com/kritskiyd/ParallelLab/issues/79) | 8 |
+| [Спринт 9](#спринт-9) | Серии вычислительных экспериментов | [#30](https://github.com/kritskiyd/ParallelLab/issues/30), [#31](https://github.com/kritskiyd/ParallelLab/issues/31), [#32](https://github.com/kritskiyd/ParallelLab/issues/32) | [#80](https://github.com/kritskiyd/ParallelLab/issues/80) | 13 |
+| [Спринт 10](#спринт-10) | Сохранение и просмотр результатов | [#33](https://github.com/kritskiyd/ParallelLab/issues/33), [#34](https://github.com/kritskiyd/ParallelLab/issues/34), [#35](https://github.com/kritskiyd/ParallelLab/issues/35) | [#81](https://github.com/kritskiyd/ParallelLab/issues/81) | 11 |
+| [Спринт 11](#спринт-11) | Анализ производительности | [#36](https://github.com/kritskiyd/ParallelLab/issues/36), [#37](https://github.com/kritskiyd/ParallelLab/issues/37), [#38](https://github.com/kritskiyd/ParallelLab/issues/38), [#39](https://github.com/kritskiyd/ParallelLab/issues/39) | [#82](https://github.com/kritskiyd/ParallelLab/issues/82) | 16 |
+| [Спринт 12](#спринт-12) | Проверка и подготовка первого выпуска | Подготовка / общая проверка | [#83](https://github.com/kritskiyd/ParallelLab/issues/83) | 0 |
 
-## Ближайший Sprint Backlog
+<a id="спринт-1"></a>
 
-Выбраны [M01 / #11](https://github.com/kritskiyd/ParallelLab/issues/11), [M02 / #12](https://github.com/kritskiyd/ParallelLab/issues/12), [M03 / #13](https://github.com/kritskiyd/ParallelLab/issues/13): 13 SP и 10 технических Task. Зависимость внутри спринта: сначала формат и создание, затем открытие, затем единый контекст рабочей области.
+## Спринт 1. Подготовка основы приложения
 
-Task содержат конкретные результаты: формат и валидация, интерфейс и атомарная запись, загрузка и проверка ошибок, IDE-компоновка и навигация. Их критерии доступны через [реестр](Product-Backlog.md).
+**Период:** 20.10.2026–02.11.2026.
 
-Планирование не выдаётся за начало разработки. Статус Backlog сохраняется до подтверждения Definition of Ready и реального принятия работы исполнителем.
+**Цель:** Согласовать границы компонентов, подготовить оболочку рабочей области и формат эксперимента.
 
-## Зависимости
+**Основная тема:** Подготовка основы приложения.
 
-До OpenMP/MPI нужны код, базовая сборка, окружение и управление процессом. CUDA-трансляция зависит от CPU-конвейера; Native GPU-режим не является её зависимостью. Серия использует готовые одиночные запуски; сохранение связывает результат со снимком системы. Аналитика использует корректные сохранённые записи. Все прямые зависимости перечислены в PBI; циклов нет.
+**Пользовательские истории:**
 
-## Последующие релизы
+Новых самостоятельных историй не принимается. Подготовительные части #11 и #13.
 
-Version 1 и Version 2 остаются в Product Backlog с предварительными SP, без выдуманных дат или преждевременной технической декомпозиции. Спринты этих релизов выбираются после Review MVP и уточнения скорости разработки.
+**Технические задачи:**
 
-[Current Sprint](https://github.com/users/kritskiyd/projects/1/views/1) · [Next Sprint](https://github.com/users/kritskiyd/projects/1/views/2) · [Roadmap](Roadmap.md) · [Навигация](Home.md)
+- [Описать локальный формат эксперимента и правила валидации](https://github.com/kritskiyd/ParallelLab/issues/64)
+- [Собрать рабочую область на основе существующего прототипа](https://github.com/kritskiyd/ParallelLab/issues/71)
+- [Реализовать единый контекст текущего эксперимента](https://github.com/kritskiyd/ParallelLab/issues/72)
+
+**Функциональные разделы:** [Управление вычислительными экспериментами](https://github.com/kritskiyd/ParallelLab/issues/1).
+
+**Ожидаемый результат:** Подготовлены основа интерфейса и описание локального хранения; создание и открытие принимаются в следующем спринте.
+
+**Суммарная оценка историй:** 0 условных единиц. Технические части отдельно не прибавляются.
+
+**Зависимости:** Согласованные требования и существующий прототип.
+
+
+<a id="спринт-2"></a>
+
+## Спринт 2. Создание и хранение экспериментов
+
+**Период:** 03.11.2026–16.11.2026.
+
+**Цель:** Реализовать безопасный цикл создания, сохранения и повторного открытия эксперимента.
+
+**Основная тема:** Создание и хранение экспериментов.
+
+**Пользовательские истории:**
+
+- [Создать вычислительный эксперимент](https://github.com/kritskiyd/ParallelLab/issues/11)
+- [Открыть сохранённый эксперимент](https://github.com/kritskiyd/ParallelLab/issues/12)
+- [Перейти в рабочую область текущего эксперимента](https://github.com/kritskiyd/ParallelLab/issues/13)
+
+**Технические задачи:**
+
+- [Реализовать форму создания эксперимента](https://github.com/kritskiyd/ParallelLab/issues/65)
+- [Реализовать безопасную запись нового эксперимента](https://github.com/kritskiyd/ParallelLab/issues/66)
+- [Проверить создание эксперимента и обработку ошибок](https://github.com/kritskiyd/ParallelLab/issues/67)
+- [Реализовать загрузку и проверку формата эксперимента](https://github.com/kritskiyd/ParallelLab/issues/68)
+- [Реализовать выбор файла и ошибки открытия](https://github.com/kritskiyd/ParallelLab/issues/69)
+- [Проверить повторное открытие сохранённого эксперимента](https://github.com/kritskiyd/ParallelLab/issues/70)
+- [Проверить навигацию и состояния рабочей области](https://github.com/kritskiyd/ParallelLab/issues/73)
+
+**Функциональные разделы:** [Управление вычислительными экспериментами](https://github.com/kritskiyd/ParallelLab/issues/1).
+
+**Ожидаемый результат:** Пользователь создаёт и повторно открывает эксперимент в единой рабочей области.
+
+**Суммарная оценка историй:** 13 условных единиц. Технические части отдельно не прибавляются.
+
+**Зависимости:** Результаты подготовительного спринта 1.
+
+
+<a id="спринт-3"></a>
+
+## Спринт 3. Работа с исходным кодом
+
+**Период:** 17.11.2026–30.11.2026.
+
+**Цель:** Подготовить редактор, несколько реализаций и последовательную базу.
+
+**Основная тема:** Работа с исходным кодом.
+
+**Пользовательские истории:**
+
+- [Просматривать и редактировать исходный код](https://github.com/kritskiyd/ParallelLab/issues/14)
+- [Работать с несколькими реализациями одной задачи](https://github.com/kritskiyd/ParallelLab/issues/15)
+- [Выбрать Sequential C++ как базовую реализацию](https://github.com/kritskiyd/ParallelLab/issues/17)
+
+**Технические задачи:**
+
+- [Проверить редактор и раздельное хранение реализаций](https://github.com/kritskiyd/ParallelLab/issues/74)
+
+**Функциональные разделы:** [Работа с исходным кодом](https://github.com/kritskiyd/ParallelLab/issues/2), [Выбор вычислительной технологии](https://github.com/kritskiyd/ParallelLab/issues/3).
+
+**Ожидаемый результат:** Код редактируется и сохраняется отдельно для каждой технологии; выбран Sequential C++.
+
+**Суммарная оценка историй:** 13 условных единиц. Технические части отдельно не прибавляются.
+
+**Зависимости:** спринт 2
+
+
+<a id="спринт-4"></a>
+
+## Спринт 4. Параметры, окружение и сборка
+
+**Период:** 01.12.2026–14.12.2026.
+
+**Цель:** Подготовить общие параметры и проверенное окружение до выполнения программ.
+
+**Основная тема:** Параметры, окружение и сборка.
+
+**Пользовательские истории:**
+
+- [Настроить размер задачи и число повторов](https://github.com/kritskiyd/ParallelLab/issues/21)
+- [Проверить C++ компилятор, OpenMP и MPI Runtime](https://github.com/kritskiyd/ParallelLab/issues/24)
+- [Скомпилировать выбранную реализацию](https://github.com/kritskiyd/ParallelLab/issues/26)
+
+**Технические задачи:**
+
+- [Проверить параметры, диагностику и актуальность сборки](https://github.com/kritskiyd/ParallelLab/issues/75)
+
+**Функциональные разделы:** [Настройка параметров вычислений](https://github.com/kritskiyd/ParallelLab/issues/4), [Проверка программного окружения](https://github.com/kritskiyd/ParallelLab/issues/5), [Компиляция и выполнение программ](https://github.com/kritskiyd/ParallelLab/issues/6).
+
+**Ожидаемый результат:** Параметры проходят проверку; программа собирается актуальным компилятором, ошибки различимы.
+
+**Суммарная оценка историй:** 13 условных единиц. Технические части отдельно не прибавляются.
+
+**Зависимости:** спринт 3
+
+
+<a id="спринт-5"></a>
+
+## Спринт 5. Управляемый запуск и OpenMP
+
+**Период:** 15.12.2026–28.12.2026.
+
+**Цель:** Добавить консоль, остановку и управление потоками OpenMP.
+
+**Основная тема:** Управляемый запуск и OpenMP.
+
+**Пользовательские истории:**
+
+- [Выбрать и выполнить OpenMP-реализацию](https://github.com/kritskiyd/ParallelLab/issues/18)
+- [Настроить потоки OpenMP и процессы MPI](https://github.com/kritskiyd/ParallelLab/issues/22)
+- [Просматривать консоль и сообщения об ошибках](https://github.com/kritskiyd/ParallelLab/issues/27)
+- [Запустить и остановить вычислительную программу](https://github.com/kritskiyd/ParallelLab/issues/28)
+
+**Технические задачи:**
+
+- [Проверить OpenMP, консоль и остановку процессов](https://github.com/kritskiyd/ParallelLab/issues/76)
+
+**Функциональные разделы:** [Выбор вычислительной технологии](https://github.com/kritskiyd/ParallelLab/issues/3), [Настройка параметров вычислений](https://github.com/kritskiyd/ParallelLab/issues/4), [Компиляция и выполнение программ](https://github.com/kritskiyd/ParallelLab/issues/6).
+
+**Ожидаемый результат:** Доступны Sequential и OpenMP с выводом, отменой и заданной степенью параллелизма.
+
+**Суммарная оценка историй:** 14 условных единиц. Технические части отдельно не прибавляются.
+
+**Зависимости:** спринт 3, спринт 4
+
+
+<a id="спринт-6"></a>
+
+## Спринт 6. MPI и характеристики системы
+
+**Период:** 29.12.2026–11.01.2027.
+
+**Цель:** Выполнить MPI-программу и зафиксировать аппаратно-программные условия.
+
+**Основная тема:** MPI и характеристики системы.
+
+**Пользовательские истории:**
+
+- [Выбрать и выполнить MPI-реализацию](https://github.com/kritskiyd/ParallelLab/issues/20)
+- [Просмотреть CPU, RAM, GPU и ОС](https://github.com/kritskiyd/ParallelLab/issues/40)
+- [Связать снимок системы с результатом запуска](https://github.com/kritskiyd/ParallelLab/issues/41)
+
+**Технические задачи:**
+
+- [Проверить MPI и фиксацию условий запуска](https://github.com/kritskiyd/ParallelLab/issues/77)
+
+**Функциональные разделы:** [Выбор вычислительной технологии](https://github.com/kritskiyd/ParallelLab/issues/3), [Характеристики вычислительной системы](https://github.com/kritskiyd/ParallelLab/issues/10).
+
+**Ожидаемый результат:** MPI запускается с заданным числом процессов; результат связан со снимком системы.
+
+**Суммарная оценка историй:** 11 условных единиц. Технические части отдельно не прибавляются.
+
+**Зависимости:** спринт 3, спринт 4, спринт 5
+
+
+<a id="спринт-7"></a>
+
+## Спринт 7. Подготовка CUDA-трансляции
+
+**Период:** 12.01.2027–25.01.2027.
+
+**Цель:** Проверить доступность транслятора и поддерживаемость CUDA-кода, показать C++17.
+
+**Основная тема:** Подготовка CUDA-трансляции.
+
+**Пользовательские истории:**
+
+- [Просматривать C++17 после CUDA-трансляции](https://github.com/kritskiyd/ParallelLab/issues/16)
+- [Выбрать CUDA-транслятор для CPU](https://github.com/kritskiyd/ParallelLab/issues/19)
+- [Диагностировать CUDA-транслятор и ошибки окружения](https://github.com/kritskiyd/ParallelLab/issues/25)
+
+**Технические задачи:**
+
+- [Проверить поддерживаемость CUDA и диагностику трансляции](https://github.com/kritskiyd/ParallelLab/issues/78)
+
+**Функциональные разделы:** [Работа с исходным кодом](https://github.com/kritskiyd/ParallelLab/issues/2), [Выбор вычислительной технологии](https://github.com/kritskiyd/ParallelLab/issues/3), [Проверка программного окружения](https://github.com/kritskiyd/ParallelLab/issues/5).
+
+**Ожидаемый результат:** Поддерживаемый CUDA-код преобразуется в C++17, неподдерживаемый получает диагностику.
+
+**Суммарная оценка историй:** 14 условных единиц. Технические части отдельно не прибавляются.
+
+**Зависимости:** спринт 3, спринт 4, спринт 5
+
+
+<a id="спринт-8"></a>
+
+## Спринт 8. CUDA на CPU
+
+**Период:** 26.01.2027–08.02.2027.
+
+**Цель:** Задать Grid и Block и проверить полный конвейер выполнения на CPU.
+
+**Основная тема:** CUDA на CPU.
+
+**Пользовательские истории:**
+
+- [Настроить CUDA Grid и Block](https://github.com/kritskiyd/ParallelLab/issues/23)
+- [Выполнить преобразованный CUDA-код на CPU](https://github.com/kritskiyd/ParallelLab/issues/29)
+
+**Технические задачи:**
+
+- [Проверить полный конвейер CUDA на CPU](https://github.com/kritskiyd/ParallelLab/issues/79)
+
+**Функциональные разделы:** [Настройка параметров вычислений](https://github.com/kritskiyd/ParallelLab/issues/4), [Компиляция и выполнение программ](https://github.com/kritskiyd/ParallelLab/issues/6).
+
+**Ожидаемый результат:** CUDA-пример выполняется через транслятор без NVIDIA GPU; результат не выдаётся за производительность GPU.
+
+**Суммарная оценка историй:** 8 условных единиц. Технические части отдельно не прибавляются.
+
+**Зависимости:** спринт 4, спринт 5, спринт 7
+
+
+<a id="спринт-9"></a>
+
+## Спринт 9. Серии вычислительных экспериментов
+
+**Период:** 09.02.2027–22.02.2027.
+
+**Цель:** Организовать план перебора параметров, повторы и контроль прогресса.
+
+**Основная тема:** Серии вычислительных экспериментов.
+
+**Пользовательские истории:**
+
+- [Создать серию запусков и отслеживать прогресс](https://github.com/kritskiyd/ParallelLab/issues/30)
+- [Перебирать потоки, процессы и размер задачи](https://github.com/kritskiyd/ParallelLab/issues/31)
+- [Выполнить повторы каждой конфигурации](https://github.com/kritskiyd/ParallelLab/issues/32)
+
+**Технические задачи:**
+
+- [Проверить серии, повторы и частичные ошибки](https://github.com/kritskiyd/ParallelLab/issues/80)
+
+**Функциональные разделы:** [Организация серий запусков](https://github.com/kritskiyd/ParallelLab/issues/7).
+
+**Ожидаемый результат:** Серия имеет проверенный план и отдельные статусы и измерения каждого повтора.
+
+**Суммарная оценка историй:** 13 условных единиц. Технические части отдельно не прибавляются.
+
+**Зависимости:** спринт 5, спринт 6, спринт 8
+
+
+<a id="спринт-10"></a>
+
+## Спринт 10. Сохранение и просмотр результатов
+
+**Период:** 23.02.2027–08.03.2027.
+
+**Цель:** Сохранить результаты с кодом и условиями и восстановить историю после перезапуска.
+
+**Основная тема:** Сохранение и просмотр результатов.
+
+**Пользовательские истории:**
+
+- [Просматривать базовую историю запусков](https://github.com/kritskiyd/ParallelLab/issues/33)
+- [Просматривать детали и таблицу результатов запуска](https://github.com/kritskiyd/ParallelLab/issues/34)
+- [Сохранить результат с условиями эксперимента](https://github.com/kritskiyd/ParallelLab/issues/35)
+
+**Технические задачи:**
+
+- [Проверить сохранность результатов после перезапуска](https://github.com/kritskiyd/ParallelLab/issues/81)
+
+**Функциональные разделы:** [Сохранение и просмотр результатов](https://github.com/kritskiyd/ParallelLab/issues/8).
+
+**Ожидаемый результат:** Результаты доступны повторно, а изменение эксперимента не переписывает прошлые измерения.
+
+**Суммарная оценка историй:** 11 условных единиц. Технические части отдельно не прибавляются.
+
+**Зависимости:** спринт 5, спринт 6, спринт 9
+
+
+<a id="спринт-11"></a>
+
+## Спринт 11. Анализ производительности
+
+**Период:** 09.03.2027–22.03.2027.
+
+**Цель:** Сопоставить измерения, вычислить ускорение и эффективность, построить базовые графики.
+
+**Основная тема:** Анализ производительности.
+
+**Пользовательские истории:**
+
+- [Сравнить время выполнения реализаций](https://github.com/kritskiyd/ParallelLab/issues/36)
+- [Рассчитать ускорение относительно Sequential C++](https://github.com/kritskiyd/ParallelLab/issues/37)
+- [Рассчитать эффективность OpenMP и MPI](https://github.com/kritskiyd/ParallelLab/issues/38)
+- [Построить базовый график и выбрать оси](https://github.com/kritskiyd/ParallelLab/issues/39)
+
+**Технические задачи:**
+
+- [Проверить формулы и согласованность таблицы и графика](https://github.com/kritskiyd/ParallelLab/issues/82)
+
+**Функциональные разделы:** [Анализ производительности](https://github.com/kritskiyd/ParallelLab/issues/9).
+
+**Ожидаемый результат:** Доступны таблицы и графики по сопоставимым данным с корректными формулами и единицами.
+
+**Суммарная оценка историй:** 16 условных единиц. Технические части отдельно не прибавляются.
+
+**Зависимости:** спринт 5, спринт 6, спринт 8, спринт 10
+
+
+<a id="спринт-12"></a>
+
+## Спринт 12. Проверка и подготовка первого выпуска
+
+**Период:** 23.03.2027–05.04.2027.
+
+**Цель:** Пройти сквозной сценарий и повторить проверки ошибок и сохранности данных.
+
+**Основная тема:** Проверка и подготовка первого выпуска.
+
+**Пользовательские истории:**
+
+Новых функций не добавляется. Итоговая проверка ранее реализованных #11–#41.
+
+**Технические задачи:**
+
+- [Выполнить итоговую проверку сценария первого выпуска](https://github.com/kritskiyd/ParallelLab/issues/83)
+
+**Функциональные разделы:** [Анализ производительности](https://github.com/kritskiyd/ParallelLab/issues/9).
+
+**Ожидаемый результат:** При выполнении критериев завершения подготовлен кандидат первого выпуска; это план, а не сообщение о готовности ПО.
+
+**Суммарная оценка историй:** 0 условных единиц. Технические части отдельно не прибавляются.
+
+**Зависимости:** Принятые истории первого выпуска из спринтов 2–11 и результаты проверок #74–#82.
+
+[Бэклог](Product-Backlog.md) · [Организация Scrum](Scrum-Process.md) · [Навигация](Home.md)

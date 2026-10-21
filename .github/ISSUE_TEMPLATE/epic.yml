@@ -1,7 +1,6 @@
-name: Epic
-description: Крупное направление продукта и дочерние PBI
-title: "[Epic] "
-labels: [epic]
+name: Функциональный раздел
+description: Крупное направление и дочерние пользовательские истории
+labels: [раздел]
 body:
   - type: textarea
     id: description
@@ -13,8 +12,8 @@ body:
   - type: textarea
     id: scope
     attributes:
-      label: Функциональный охват и границы релизов
-      description: MVP, Version 1, Version 2 без переноса CUDA Native в MVP
+      label: Функциональный охват и границы выпусков
+      description: Первый, второй и третий выпуски без переноса CUDA Native в первый
     validations:
       required: true
   - type: textarea
@@ -26,5 +25,5 @@ body:
   - type: textarea
     id: children
     attributes:
-      label: Дочерние PBI
-      description: Ссылки на реальные Issues; после создания настройте Sub-issues
+      label: Дочерние пользовательские истории
+      description: Ссылки на реальные задачи; после создания настройте нативные дочерние связи
