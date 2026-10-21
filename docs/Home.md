@@ -8,6 +8,7 @@
 - [Организация Scrum](Scrum-Process.md)
 - [Бэклог продукта](Product-Backlog.md)
 - [Планирование спринтов](Sprint-Planning.md)
+- [Результаты анализа и макета](Preparation-Results.md)
 - [План выпусков](Roadmap.md)
 - [Руководство разработчика](Development-Guide.md)
 - [Требования первого выпуска](MVP-Requirements.md)
