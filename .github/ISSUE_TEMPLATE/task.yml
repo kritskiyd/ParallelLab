@@ -6,7 +6,7 @@ body:
     id: parent
     attributes:
       label: Родительская история
-      description: Ссылка на реальную историю; настройте нативную дочернюю связь
+      description: Ссылка на пользовательскую историю; после создания добавьте задачу к её подзадачам
     validations:
       required: true
   - type: textarea
